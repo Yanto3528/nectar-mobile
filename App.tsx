@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
-// import HomeIcon from './assets/icons/home.svg'
-import { HomeIcon } from '@/components/icons'
+
+import { Icon } from '@/components/ui'
 
 import Home from './src/screens/Home'
 import Account from './src/screens/Account'
@@ -51,7 +51,8 @@ export default function App() {
           tabBarActiveTintColor: '#7F3DFF'
         }}>
           <Tab.Screen name="Home" component={Home} options={{
-            tabBarIcon: ({ color }) => <HomeIcon fill={color} />,
+            tabBarIcon: ({ color }) => <Icon name='Home' fill={color} />,
+            header: () => null,
           }} />
           <Tab.Screen name="Account" component={Account} />
         </Tab.Navigator>

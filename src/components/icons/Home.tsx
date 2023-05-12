@@ -1,7 +1,8 @@
 import * as React from "react"
 import Svg, { SvgProps, Path } from "react-native-svg"
 import { memo } from "react"
-const HomeIcon = (props: SvgProps) => (
+
+const Home = (props: SvgProps) => (
   <Svg
     width={32}
     height={32}
@@ -14,5 +15,5 @@ const HomeIcon = (props: SvgProps) => (
     />
   </Svg>
 )
-const Memo = memo(HomeIcon)
+const Memo = memo(Home)
 export default Memo
