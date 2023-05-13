@@ -68,7 +68,6 @@ module.exports = {
       "inter-extrabold": ["inter-extrabold"],
       "inter-black": ["inter-black"],
     },
-    extend: {},
   },
   plugins: [],
 };
