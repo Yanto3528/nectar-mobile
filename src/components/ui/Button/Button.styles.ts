@@ -15,7 +15,7 @@ export const buttonStyles = cva(
   }
 );
 
-export const buttonTextStyles = cva("font-inter-medium", {
+export const buttonTextStyles = cva("font-inter-semibold uppercase", {
   variants: {
     variant: {
       solid: "text-light",
