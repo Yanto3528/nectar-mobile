@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import { Icon } from '@/components/ui'
 import { RootStackParamList } from '@/types/common'
@@ -41,20 +42,21 @@ export default function App() {
 
   return (
     <SafeAreaView className='flex-1'>
-      <View className='h-full w-full' onLayout={onLayoutRootView}>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={{
-            tabBarLabelStyle: {
-              fontFamily: 'inter-medium'
-            },
-            tabBarActiveTintColor: '#7F3DFF',
-          }}>
-            <Tab.Screen name="Home" component={Home} options={{
-              tabBarIcon: ({ color }) => <Icon name='Home' fill={color} />,
-              header: () => null,
-            }} />
-            <Tab.Screen name="Account" component={Account} />
-            {/* <Tab.Screen name="Expense" component={Expense} options={{
+      <GestureHandlerRootView>
+        <View className='h-full w-full' onLayout={onLayoutRootView}>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={{
+              tabBarLabelStyle: {
+                fontFamily: 'inter-medium'
+              },
+              tabBarActiveTintColor: '#7F3DFF',
+            }}>
+              <Tab.Screen name="Home" component={Home} options={{
+                tabBarIcon: ({ color }) => <Icon name='Home' fill={color} />,
+                header: () => null,
+              }} />
+              <Tab.Screen name="Account" component={Account} />
+              {/* <Tab.Screen name="Expense" component={Expense} options={{
             headerTitleAlign: 'center',
             headerTitleStyle: {
               fontFamily: 'inter-semibold',
@@ -65,10 +67,11 @@ export default function App() {
               // backgroundColor: '#00A86B'
             },
           }} /> */}
-          </Tab.Navigator>
-          <StatusBar style="auto" />
-        </NavigationContainer >
-      </View>
+            </Tab.Navigator>
+            <StatusBar style="auto" />
+          </NavigationContainer >
+        </View>
+      </GestureHandlerRootView>
     </SafeAreaView>
   );
 }

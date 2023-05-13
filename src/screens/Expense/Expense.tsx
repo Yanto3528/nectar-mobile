@@ -1,6 +1,6 @@
-import { View, TextInput } from 'react-native'
+import { View } from 'react-native'
 
-import { CustomText, Input } from '@/components/ui'
+import { CustomText, Input, DatePicker } from '@/components/ui'
 
 export default function Expense() {
   return (
@@ -10,6 +10,7 @@ export default function Expense() {
         <Input keyboardType='decimal-pad' placeholder='Enter amount' error='This field is required' />
         <Input placeholder='Enter amount' />
       </View>
+      <DatePicker label='Select date' error='Date is required' />
     </View>
   )
 }

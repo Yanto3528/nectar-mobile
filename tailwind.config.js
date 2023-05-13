@@ -58,6 +58,7 @@ module.exports = {
         100: "#0077FF",
         DEFAULT: "#0077FF",
       },
+      transparent: "transparent",
     },
     fontFamily: {
       "inter-thin": ["inter-thin"],
