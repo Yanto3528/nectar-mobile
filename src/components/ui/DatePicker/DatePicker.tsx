@@ -1,14 +1,14 @@
-import { useState, useRef, useCallback, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { Calendar, DateData } from 'react-native-calendars'
 import { Direction } from 'react-native-calendars/src/types';
-import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import dayjs from 'dayjs';
 
 import { useBottomSheet } from '@/lib/hooks/common'
 
 import { FormLabel, FormErrorMessage } from '../Form'
+import BottomSheet from '../BottomSheet';
 import CustomText from '../CustomText';
 import Button from '../Button';
 import { DatePickerProps } from './DatePicker.types'
@@ -23,7 +23,7 @@ const calendarTheme = {
 
 export default function DatePicker({ label, labelClassName, error }: DatePickerProps) {
   const [selectedDate, setSelectedDate] = useState(dayjs().format('YYYY-MM-DD'))
-  const { sheetIndex, onOpenSheet, onCloseSheet, bottomSheetRef, handleSheetChanges } = useBottomSheet()
+  const { sheetIndex, onOpenSheet, onCloseSheet, handleSheetChanges } = useBottomSheet()
 
   const snapPoints = useMemo(() => ['1%', '85%'], []);
   const onDayPress = (day: DateData) => {
@@ -46,12 +46,9 @@ export default function DatePicker({ label, labelClassName, error }: DatePickerP
         {error && <FormErrorMessage>{error}</FormErrorMessage>}
       </View>
       <BottomSheet
-        ref={bottomSheetRef}
         index={sheetIndex}
         snapPoints={snapPoints}
-        enablePanDownToClose
         onChange={handleSheetChanges}
-        backdropComponent={BottomSheetBackdrop}
       >
         <View className='p-4 flex-1'>
           <CustomText className='pb-2 font-inter-bold text-lg border-b border-light-20'>Select date</CustomText>

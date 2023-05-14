@@ -1,10 +1,7 @@
-import { useState, useRef, useCallback } from "react";
-import BottomSheet from "@gorhom/bottom-sheet";
+import { useState, useCallback } from "react";
 
 export function useBottomSheet() {
   const [sheetIndex, setSheetIndex] = useState(-1);
-
-  const bottomSheetRef = useRef<BottomSheet>(null);
 
   const onCloseSheet = useCallback(() => setSheetIndex(0), []);
   const onOpenSheet = useCallback(() => setSheetIndex(1), []);
@@ -15,7 +12,6 @@ export function useBottomSheet() {
 
   return {
     sheetIndex,
-    bottomSheetRef,
     onCloseSheet,
     onOpenSheet,
     handleSheetChanges,
