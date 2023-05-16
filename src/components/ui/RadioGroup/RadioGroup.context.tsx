@@ -9,6 +9,7 @@ const RadioGroupContext = createContext<RadioGroupContextProps>({
   value: "",
   onChange: () => {},
   orientation: "vertical",
+  error: undefined,
 });
 
 export function useRadioGroupContext() {
@@ -27,6 +28,7 @@ export function RadioGroupProvider({
   value,
   onChange,
   orientation,
+  error,
   children,
 }: RadioGroupProviderProps) {
   const contextValue = useMemo(() => {
@@ -34,6 +36,7 @@ export function RadioGroupProvider({
       value,
       onChange,
       orientation,
+      error,
     };
   }, [value, onChange, orientation]);
 

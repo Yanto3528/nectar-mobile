@@ -14,11 +14,15 @@ export const radioStyles = cva(
         horizontal: "flex-1",
         vertical: "",
       },
+      error: {
+        true: "border-red",
+      },
     },
     compoundVariants: [
       {
         checked: true,
         bordered: true,
+        error: false,
         className: "border-primary",
       },
     ],
@@ -32,10 +36,20 @@ export const radioIndicatorStyles = cva(
       checked: {
         true: "border-primary",
       },
+      error: {
+        true: "border-red",
+      },
     },
   }
 );
 
 export const radioActiveIndicatorStyles = cva(
-  "h-2 w-2 bg-primary rounded-full"
+  "h-2 w-2 bg-primary rounded-full",
+  {
+    variants: {
+      error: {
+        true: "bg-red",
+      },
+    },
+  }
 );

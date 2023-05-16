@@ -18,7 +18,12 @@ export default function Radio({
   bordered,
   ...props
 }: RadioProps) {
-  const { value: radioValue, onChange, orientation } = useRadioGroupContext();
+  const {
+    value: radioValue,
+    onChange,
+    orientation,
+    error,
+  } = useRadioGroupContext();
   const isChecked = value === radioValue;
 
   const onRadioPress = () => {
@@ -28,14 +33,28 @@ export default function Radio({
   return (
     <TouchableOpacity
       className={cn(
-        radioStyles({ bordered, checked: isChecked, orientation, className })
+        radioStyles({
+          bordered,
+          checked: isChecked,
+          orientation,
+          error: !!error,
+          className,
+        })
       )}
       activeOpacity={0.6}
       onPress={onRadioPress}
       {...props}
     >
-      <View className={cn(radioIndicatorStyles({ checked: isChecked }))}>
-        {isChecked && <View className={cn(radioActiveIndicatorStyles())} />}
+      <View
+        className={cn(
+          radioIndicatorStyles({ checked: isChecked, error: !!error })
+        )}
+      >
+        {isChecked && (
+          <View
+            className={cn(radioActiveIndicatorStyles({ error: !!error }))}
+          />
+        )}
       </View>
       <CustomText className="ml-2">{children}</CustomText>
     </TouchableOpacity>

@@ -1,71 +1,87 @@
-import { useState, useMemo } from 'react'
-import { TouchableOpacity, View } from 'react-native'
-import { Calendar, DateData } from 'react-native-calendars'
-import { Direction } from 'react-native-calendars/src/types';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import dayjs from 'dayjs';
+import { useState } from "react";
+import { TouchableOpacity, View } from "react-native";
+import { Calendar, DateData } from "react-native-calendars";
+import { Direction } from "react-native-calendars/src/types";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import dayjs from "dayjs";
 
-import { useBottomSheet } from '@/lib/hooks/common'
+import { useBottomSheet, useBottomSheetModal } from "@/lib/hooks/common";
 
-import { FormLabel, FormErrorMessage } from '../Form'
-import BottomSheet from '../BottomSheet';
-import CustomText from '../CustomText';
-import Button from '../Button';
-import { DatePickerProps } from './DatePicker.types'
-import { datePickerStyles } from './DatePicker.styles'
+import { FormLabel, FormErrorMessage } from "../Form";
+import BottomSheet from "../BottomSheet";
+import BottomSheetModal from "../BottomSheetModal";
+import CustomText from "../CustomText";
+import Button from "../Button";
+import { DatePickerProps } from "./DatePicker.types";
+import { datePickerStyles } from "./DatePicker.styles";
 
 const calendarTheme = {
-  selectedDayBackgroundColor: '#7F3DFF',
-  textDayFontFamily: 'inter-medium',
-  textMonthFontFamily: 'inter-bold',
-  textDayHeaderFontFamily: 'inter',
-}
+  selectedDayBackgroundColor: "#7F3DFF",
+  textDayFontFamily: "inter-medium",
+  textMonthFontFamily: "inter-bold",
+  textDayHeaderFontFamily: "inter",
+};
 
-export default function DatePicker({ label, labelClassName, error }: DatePickerProps) {
-  const [selectedDate, setSelectedDate] = useState(dayjs().format('YYYY-MM-DD'))
-  const { sheetIndex, onOpenSheet, onCloseSheet, handleSheetChanges } = useBottomSheet()
+export default function DatePicker({
+  label,
+  labelClassName,
+  error,
+}: DatePickerProps) {
+  const [selectedDate, setSelectedDate] = useState(
+    dayjs().format("YYYY-MM-DD")
+  );
 
-  const snapPoints = useMemo(() => ['1%', '85%'], []);
+  const { isOpen, onOpen, onClose } = useBottomSheetModal();
+
   const onDayPress = (day: DateData) => {
-    setSelectedDate(day.dateString)
-    onCloseSheet()
-  }
+    setSelectedDate(day.dateString);
+    onClose();
+  };
 
   const renderArrow = (direction: Direction) => {
-    return <Ionicons name={`chevron-${direction === 'left' ? 'back' : 'forward'}-outline`} size={24} />
-  }
+    return (
+      <Ionicons
+        name={`chevron-${direction === "left" ? "back" : "forward"}-outline`}
+        size={24}
+      />
+    );
+  };
 
   return (
     <>
       <View>
         {label && <FormLabel className={labelClassName}>{label}</FormLabel>}
-        <TouchableOpacity className={datePickerStyles({ error: !!error })} onPress={onOpenSheet}>
-          <Ionicons name='calendar-sharp' size={16} />
-          <CustomText className='ml-4'>{dayjs(selectedDate).format('DD MMMM YYYY')}</CustomText>
+        <TouchableOpacity
+          className={datePickerStyles({ error: !!error })}
+          onPress={onOpen}
+        >
+          <Ionicons name="calendar-sharp" size={16} />
+          <CustomText className="ml-4">
+            {dayjs(selectedDate).format("DD MMMM YYYY")}
+          </CustomText>
         </TouchableOpacity>
         {error && <FormErrorMessage>{error}</FormErrorMessage>}
       </View>
-      <BottomSheet
-        index={sheetIndex}
-        snapPoints={snapPoints}
-        onChange={handleSheetChanges}
-      >
-        <View className='p-4 flex-1'>
-          <CustomText className='pb-2 font-inter-bold text-lg border-b border-light-20'>Select date</CustomText>
-          <View className='flex-1'>
+      <BottomSheetModal isVisible={isOpen} onClose={onClose}>
+        <View className="p-4">
+          <CustomText className="pb-2 font-inter-bold text-lg border-b border-light-20">
+            Select date
+          </CustomText>
+          <View className="h-[400]">
             <Calendar
               onDayPress={onDayPress}
               markedDates={{
-                [selectedDate]: { selected: true, disableTouchEvent: true }
+                [selectedDate]: { selected: true, disableTouchEvent: true },
               }}
               theme={calendarTheme}
               renderArrow={renderArrow}
             />
-
           </View>
-          <Button variant='outline' onPress={onCloseSheet}>Cancel</Button>
+          <Button variant="outline" onPress={onClose}>
+            Cancel
+          </Button>
         </View>
-      </BottomSheet>
+      </BottomSheetModal>
     </>
-  )
+  );
 }
