@@ -1,1 +1,1 @@
-export {default} from './FormElementWrapper'
+export { default } from './FormElementWrapper';

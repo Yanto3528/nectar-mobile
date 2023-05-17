@@ -1,21 +1,20 @@
-import { ReactNode } from "react";
-import { ViewProps } from "react-native";
+import { ReactNode } from 'react';
 
-import { BaseFormElementProps } from "@/types/form";
+import { ViewProps } from 'react-native';
 
-type Orientation = "horizontal" | "vertical";
+import { BaseFormElementProps } from '@/types/form';
+
+type Orientation = 'horizontal' | 'vertical';
 
 export type RadioGroupContextProps = {
   value: string;
   onChange: (value: string) => void;
   orientation?: Orientation;
-  error?: BaseFormElementProps["error"];
+  error?: BaseFormElementProps['error'];
 };
 
 export type RadioGroupProviderProps = RadioGroupContextProps & {
   children: ReactNode;
 };
 
-export type RadioGroupProps = ViewProps &
-  RadioGroupContextProps &
-  BaseFormElementProps;
+export type RadioGroupProps = ViewProps & RadioGroupContextProps & BaseFormElementProps;

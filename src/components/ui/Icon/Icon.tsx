@@ -1,15 +1,15 @@
-import { SvgProps } from 'react-native-svg'
+import { SvgProps } from 'react-native-svg';
 
-import * as Icons from '@/components/icons'
+import * as Icons from '@/components/icons';
 
-type IconName = keyof typeof Icons
+type IconName = keyof typeof Icons;
 
 type IconProps = SvgProps & {
-  name: IconName
-}
+  name: IconName;
+};
 
 export default function Icon({ name, ...props }: IconProps) {
-  const IconComponent = Icons[name]
+  const IconComponent = Icons[name];
 
-  return <IconComponent {...props} />
+  return <IconComponent {...props} />;
 }

@@ -1,1 +1,1 @@
-export {default} from './TabHeader'
+export { default } from './TabHeader';

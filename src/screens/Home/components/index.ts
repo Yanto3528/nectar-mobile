@@ -1,1 +1,1 @@
-export {default as RecentTransactionTabs} from './RecentTransactionTabs'  
+export { default as RecentTransactionTabs } from './RecentTransactionTabs';

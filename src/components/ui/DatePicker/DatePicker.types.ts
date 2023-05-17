@@ -1,3 +1,3 @@
-import { BaseFormElementProps } from "@/types/form";
+import { BaseFormElementProps } from '@/types/form';
 
 export type DatePickerProps = BaseFormElementProps;

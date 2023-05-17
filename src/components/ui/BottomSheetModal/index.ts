@@ -1,1 +1,1 @@
-export { default } from "./BottomSheetModal";
+export { default } from './BottomSheetModal';

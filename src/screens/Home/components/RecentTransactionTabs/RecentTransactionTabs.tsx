@@ -1,7 +1,5 @@
-import { Transactions } from './components'
+import { Transactions } from './components';
 
 export default function RecentTransactionTab() {
-  return (
-    <Transactions />
-  )
+  return <Transactions />;
 }

@@ -1,28 +1,28 @@
-import { cva } from "class-variance-authority";
+import { cva } from 'class-variance-authority';
 
 export const buttonStyles = cva(
-  "w-full py-2 px-4 rounded-md border border-transparent flex-row items-center justify-center",
+  'w-full py-2 px-4 rounded-md border border-transparent flex-row items-center justify-center',
   {
     variants: {
       variant: {
-        solid: "bg-primary",
-        outline: "bg-transparent border-primary",
+        solid: 'bg-primary',
+        outline: 'bg-transparent border-primary',
       },
     },
     defaultVariants: {
-      variant: "solid",
+      variant: 'solid',
     },
   }
 );
 
-export const buttonTextStyles = cva("font-inter-semibold uppercase", {
+export const buttonTextStyles = cva('font-inter-semibold uppercase', {
   variants: {
     variant: {
-      solid: "text-light",
-      outline: "text-primary",
+      solid: 'text-light',
+      outline: 'text-primary',
     },
   },
   defaultVariants: {
-    variant: "solid",
+    variant: 'solid',
   },
 });

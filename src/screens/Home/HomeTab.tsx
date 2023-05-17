@@ -1,28 +1,31 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Icon } from "@/components/ui";
-import { HomeTabParamList } from "@/types/common";
+import { Icon } from '@/components/ui';
+import { HomeTabParamList } from '@/types/common';
 
-import Home from "./Home";
-import Account from "../Account";
+import Account from '../Account';
+
+import Home from './Home';
 
 const Tab = createBottomTabNavigator<HomeTabParamList>();
+
+const homeIcon = ({ color }: { color: string }) => <Icon name="Home" fill={color} />;
 
 export default function HomeTab() {
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarLabelStyle: {
-          fontFamily: "inter-medium",
+          fontFamily: 'inter-medium',
         },
-        tabBarActiveTintColor: "#7F3DFF",
+        tabBarActiveTintColor: '#7F3DFF',
       }}
     >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ color }) => <Icon name="Home" fill={color} />,
+          tabBarIcon: homeIcon,
           header: () => null,
         }}
       />

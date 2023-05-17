@@ -1,14 +1,11 @@
-import { useContext, createContext, useMemo } from "react";
+import { useContext, createContext, useMemo } from 'react';
 
-import {
-  RadioGroupContextProps,
-  RadioGroupProviderProps,
-} from "./RadioGroup.types";
+import { RadioGroupContextProps, RadioGroupProviderProps } from './RadioGroup.types';
 
 const RadioGroupContext = createContext<RadioGroupContextProps>({
-  value: "",
+  value: '',
   onChange: () => {},
-  orientation: "vertical",
+  orientation: 'vertical',
   error: undefined,
 });
 
@@ -16,9 +13,7 @@ export function useRadioGroupContext() {
   const context = useContext(RadioGroupContext);
 
   if (!context) {
-    throw new Error(
-      "useRadioGroupContext must be used within a RadioGroupProvider"
-    );
+    throw new Error('useRadioGroupContext must be used within a RadioGroupProvider');
   }
 
   return context;
@@ -31,18 +26,15 @@ export function RadioGroupProvider({
   error,
   children,
 }: RadioGroupProviderProps) {
-  const contextValue = useMemo(() => {
-    return {
+  const contextValue = useMemo(
+    () => ({
       value,
       onChange,
       orientation,
       error,
-    };
-  }, [value, onChange, orientation]);
-
-  return (
-    <RadioGroupContext.Provider value={contextValue}>
-      {children}
-    </RadioGroupContext.Provider>
+    }),
+    [value, onChange, orientation]
   );
+
+  return <RadioGroupContext.Provider value={contextValue}>{children}</RadioGroupContext.Provider>;
 }

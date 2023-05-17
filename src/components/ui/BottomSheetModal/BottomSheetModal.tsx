@@ -1,19 +1,15 @@
-import { View } from "react-native";
-import Modal from "react-native-modal";
+import { View } from 'react-native';
+import Modal from 'react-native-modal';
 
-import { BottomSheetModalProps } from "./BottomSheetModal.types";
+import { BottomSheetModalProps } from './BottomSheetModal.types';
 
-export default function BottomSheetModal({
-  children,
-  onClose,
-  ...props
-}: BottomSheetModalProps) {
+export default function BottomSheetModal({ children, onClose, ...props }: BottomSheetModalProps) {
   return (
     <Modal
       className="justify-end"
       animationIn="slideInUp"
       animationOut="slideOutDown"
-      supportedOrientations={["portrait", "landscape"]}
+      supportedOrientations={['portrait', 'landscape']}
       onBackdropPress={onClose}
       onSwipeComplete={onClose}
       swipeDirection="down"
