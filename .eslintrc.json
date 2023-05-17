@@ -18,9 +18,13 @@
     "no-restricted-exports": "off",
     "linebreak-style": 0,
     "consistent-return": "off",
-    "no-param-reassign": ["error", { 
-      "props": true,
-      "ignorePropertyModificationsFor": ["state", "accum", "session", "token"] }],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state", "accum", "session", "token"]
+      }
+    ],
     "import/no-unresolved": 0,
     "import/extensions": 0,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
