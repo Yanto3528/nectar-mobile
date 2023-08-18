@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useForm } from 'react-hook-form';
 import { SafeAreaView, ScrollView, View } from 'react-native';
 
 import { CustomText, Input, DatePicker, RadioGroup, Button } from '@/components/ui';
@@ -27,12 +28,6 @@ export default function Expense() {
               Not settled yet
             </RadioGroup.Radio>
           </RadioGroup>
-          <Input placeholder="Enter the name of this transaction" label="Name" />
-          <Input placeholder="Enter the name of this transaction" label="Name" />
-          <Input placeholder="Enter the name of this transaction" label="Name" />
-          <Input placeholder="Enter the name of this transaction" label="Name" />
-          <Input placeholder="Enter the name of this transaction" label="Name" />
-          <Input placeholder="Enter the name of this transaction" label="Name" />
           <Input placeholder="Enter the name of this transaction" label="Name" />
         </View>
       </ScrollView>
